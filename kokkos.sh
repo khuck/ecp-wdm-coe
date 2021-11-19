@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+rm -rf ${KOKKOS_BUILD_DIR} ${KOKKOS_INSTALL_DIR}
+mkdir -p ${KOKKOS_BUILD_DIR}
+cd ${KOKKOS_BUILD_DIR}
+
+OPTIONS=(
+-D CMAKE_BUILD_TYPE=Debug
+-D CMAKE_INSTALL_PREFIX="${KOKKOS_INSTALL_DIR}"
+-D CMAKE_CXX_COMPILER=hipcc
+-D Kokkos_ENABLE_OPENMP=ON
+-D Kokkos_ENABLE_SERIAL=ON
+-D Kokkos_ENABLE_HIP=ON
+-D Kokkos_ARCH_SNB=ON
+-D Kokkos_ARCH_VEGA908=ON
+)
+cmake "${OPTIONS[@]}" "${KOKKOS_SOURCE_DIR:-../}"
+make -j -l32
+make install

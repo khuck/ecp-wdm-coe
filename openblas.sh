@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+rm -rf ${LAPACK_BUILD_DIR} ${LAPACK_INSTALL_DIR}
+mkdir -p ${LAPACK_BUILD_DIR}
+cd ${LAPACK_BUILD_DIR}
+
+OPTIONS=(
+-D CMAKE_INSTALL_PREFIX="${LAPACK_INSTALL_DIR}"
+-D BUILD_SHARED_LIBS=ON
+)
+cmake "${OPTIONS[@]}" "${LAPACK_SOURCE_DIR:-../}"
+make -j -l32
+make install
+
+#-D CMAKE_CXX_COMPILER=clang++
+#-D CMAKE_C_COMPILER=clang
+#-D CMAKE_Fortran_COMPILER=flang

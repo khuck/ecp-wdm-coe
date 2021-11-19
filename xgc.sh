@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+rm -rf ${XGC_BUILD_DIR}
+mkdir -p ${XGC_BUILD_DIR}
+cd ${XGC_BUILD_DIR}
+
+OPTIONS=(
+-D CMAKE_BUILD_TYPE=Debug
+-D CMAKE_CXX_COMPILER=hipcc
+-D CMAKE_C_COMPILER=clang
+-D BUILD_FULL_XGC=OFF
+-D Kokkos_ROOT="${KOKKOS_INSTALL_DIR}"
+-D Cabana_ROOT="${CABANA_INSTALL_DIR}"
+-D BLAS_ROOT="${BLAS_INSTALL_DIR}"
+-D BLAS_DIR="${BLAS_INSTALL_DIR}"
+-D USE_SYSTEM_CAMTIMERS=OFF
+)
+set -x
+cmake "${OPTIONS[@]}" "${XGC_SOURCE_DIR:-../}"
+set +x
+make -j -l32
+make test
+
+#-D CAMTIMERS_ROOT="${CAMTIMERS_INSTALL_DIR}"
