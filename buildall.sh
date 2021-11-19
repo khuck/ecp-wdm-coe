@@ -22,10 +22,18 @@ fi
 
 build() {
 cd ${basedir}
+if [ ! -d ${KOKKOS_INSTALL_DIR} ] ; then
 ./kokkos.sh
+fi
+if [ ! -d ${CABANA_INSTALL_DIR} ] ; then
 ./cabana.sh
+fi
+if [ ! -d ${LAPACK_INSTALL_DIR} ] ; then
 ./openblas.sh
+fi
+if [ ! -d ${XGC_BUILD_DIR} ] ; then
 ./xgc.sh
+fi
 }
 
 get_code
