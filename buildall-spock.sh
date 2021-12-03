@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-#source sourceme.sh
+source sourceme-spock.sh
 
 mkdir -p ${srcdir}
 
