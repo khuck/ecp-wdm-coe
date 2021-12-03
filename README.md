@@ -10,3 +10,5 @@ To build, run the `buildall.sh` script.
 To run, run the `rocprof.sh` script.
 
 In the results.csv file, the kernel with id "127" is the one of interest (it calls the `templated_push` kernel).
+
+Please note that the sourceme file is from a test system at UO.  On Spock, you don't have to build OpenBLAS - the libsci library will take care of those symbols.  Also, there are different modules required.  Please see the buildall-spock.sh for details.
