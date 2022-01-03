@@ -8,7 +8,7 @@ It should just clone the XGC source and build the full code with the installed d
 
 ## Building elsewhere
 
-Change the settings in "sourceme.sh" as appropriate. Modules in particular.
+Change the settings in `sourceme.sh` as appropriate. Modules in particular.
 Depending on your host CPU arch, you might have to change the `Kokkos_ARCH_SNB`
 argument in the kokkos build to a different architecture.  `Kokkos_ARCH_SNB` is
 for intel sandybridge.  See
