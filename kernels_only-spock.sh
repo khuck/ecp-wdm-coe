@@ -15,7 +15,7 @@ cmake \
 -DCMAKE_C_COMPILER=`which clang` \
 -DCMAKE_Fortran_COMPILER=ftn \
 -DCMAKE_CXX_STANDARD=14 \
--DCMAKE_CXX_FLAGS=-std=c++14 \
+-DCMAKE_CXX_FLAGS="-std=c++14 -munsafe-fp-atomics" \
 -DCMAKE_EXE_LINKER_FLAGS="-fopenmp ${cxx_mpi_ldflags}" \
 -DBUILD_FULL_XGC=Off \
 -DKokkos_ROOT="${KOKKOS_INSTALL_DIR}" \
