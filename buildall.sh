@@ -88,14 +88,15 @@ build() {
     fi
 
     if [ ! -d ${XGC_BUILD_DIR} ] ; then
-        if [ $fullcode -eq 1 ] ; then
-            # full XGC
+        if [ "$LMOD_SYSTEM_NAME" = "spock" ] ; then
+            # full XGC, because we can
             ./xgc.sh
         else
-            # XGC test kernels only
-            if [ "$LMOD_SYSTEM_NAME" = "spock" ] ; then
-                ./kernels_only-spock.sh
+            if [ $fullcode -eq 1 ] ; then
+                # full XGC
+                ./xgc.sh
             else
+                # XGC test kernels only
                 ./kernels_only.sh
             fi
         fi
