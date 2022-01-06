@@ -1,11 +1,15 @@
 
 module purge
+module load gcc/7.3
 module load mpi/openmpi-4.1.1-hipcc4.1
-module unload rocm
-module load rocm/4.3
+module swap rocm rocmmod4.5.0
 module load cmake
 
-basedir=`pwd`
+export MYCC=`which clang`
+export MYCXX=`which hipcc`
+export MYFTN=`which flang`
+
+export basedir=`pwd`
 export srcdir=${basedir}/src
 export builddir=${basedir}/build
 export installdir=${basedir}/install
@@ -33,6 +37,6 @@ export OMP_PLACES=threads
 export OMP_NUM_THREADS=4
 #export BLAS_INSTALL_DIR=/usr/local/packages/OpenBLAS/2.8.0
 export BLAS_INSTALL_DIR=${installdir}/OpenBLAS
-export ROCM_PATH=/opt/rocm-4.3.0
+export ROCM_PATH=/opt/rocm-4.5.0
 
 #export LD_LIBRARY_PATH=${ROCM_PATH}/lib:${ROCM_PATH}/rocprofiler/lib:${ROCM_PATH}/roctracer/lib
